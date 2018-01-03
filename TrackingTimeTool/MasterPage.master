@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Tracking Time Tool </title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-color:LightSteelBlue">
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="BodyContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    <asp:ContentPlaceHolder id="FooterContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+</body>
+</html>
