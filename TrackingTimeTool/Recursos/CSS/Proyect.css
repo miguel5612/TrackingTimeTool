@@ -1,0 +1,39 @@
+﻿.legend {
+    font-family: 'Helvetica';
+    font-weight: 700;
+    color: black;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.customizedPrimaryBtn:hover {
+    background: #003635;
+    color: white;
+    border: none;
+}
+
+.customizedPrimaryBtn {
+    background: #530;
+    color: white;
+    border: none;
+}
+
+    .customizedPrimaryBtn:VISITED {
+        background: #066;
+        color: white;
+        border: none;
+    }
+
+    .customizedPrimaryBtn:ACTIVE {
+        background: #003635;
+        color: white;
+        border: none;
+    }
+
+#divMain {
+    margin-left:23.1%;
+}
+#submitbtn{
+    margin-top:16px;
+    margin-left:16px;
+}

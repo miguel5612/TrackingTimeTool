@@ -5,7 +5,7 @@
     document.getElementById("Main").onclick = function () {
         location.href = "Main.aspx";
     };
-    document.getElementById("Client").onclick = function () {
-        location.href = "Client.aspx";
+    document.getElementsByClassName("Client")[0].onclick = function () {
+        location.href = "Proyect.aspx";
     };
 });

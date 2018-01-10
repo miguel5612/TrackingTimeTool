@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterBlank.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
 
@@ -6,12 +6,11 @@
 <head runat="server">
     <title>Tracking Time Tool </title>
     <asp:ContentPlaceHolder id="head" runat="server">
-    </asp:ContentPlaceHolder>    
-    <script src="Recursos/JS/jquery-3.2.1.min.js"></script>
+    </asp:ContentPlaceHolder>
     <script src="Recursos/JS/bootstrap.min.js"></script>
+    <script src="Recursos/JS/holder.min.js"></script>
+    <script src="Recursos/JS/jquery-3.2.1.min.js"></script>
     <link href="Recursos/CSS/bootstrap.min.css" rel="stylesheet" />
-    <link href="Recursos/Fonts/font-awesome.min.css" rel="stylesheet" />    
-    <script src="Recursos/JS/Master.js"></script>
     <link href="Recursos/CSS/master.css" rel="stylesheet" />
 </head>
 <body style="background-color:LightSteelBlue">
@@ -27,17 +26,7 @@
             <div class="navbar-brand">   
             </div>
         </div>
-
-        <form action="" class="navbar-form navbar-left">
-            <div class="input-group">
-              <div class="input-group-btn">
-                  <button class="btn  search-btn-icon">
-                   <i class="fa fa-search" aria-hidden="true"></i>                  
-                  </button>
-               </div>
-              <input type="Search" placeholder="Search Client" class="form-control-serch search-box" />   
-            </div>     
-        </form>
+      
 
         <!-- Top Menu Items -->
         <div class="items">
@@ -54,6 +43,7 @@
                 <li id="Main">
                    <a class="active" href="/Main.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-home" aria-hidden="true"></i>   <span style="color:white;">  Home </span></a>
                 </li>
+                <!--
 
                 <li class="Client" id="Client" runat="server">
                     <a class="#" href="/Proyect.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-user-o" aria-hidden="true"></i>   <span style="color:white;">  Add/Modify Proyect </span></a>
@@ -62,7 +52,7 @@
                 <li id="Logout">
                     <a class="#" href="/logout.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-man" aria-hidden="true"></i>   <span style="color:white;"> Logout </span></a>
                 </li>
-                <!--
+                
                 <li>
                     <a class="#" href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-envelope" aria-hidden="true"></i>  <span style="color:white;"> Messages </span></a>
                 </li>

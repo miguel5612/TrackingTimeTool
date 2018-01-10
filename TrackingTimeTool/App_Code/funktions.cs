@@ -32,4 +32,32 @@ public class funktions
         myConn.Close();
         return scalar;
     }
+    public static SqlDataReader fetchReader(string query)
+    {
+        SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["TTTConectionString"].ConnectionString);
+        SqlCommand myCmd = new SqlCommand(query, myConn);
+        myConn.Open();
+        return myCmd.ExecuteReader(CommandBehavior.CloseConnection);
+    }
+
+    public static DataSet fetchData(string query)
+    {
+        SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["TTTConectionString"].ConnectionString);
+        SqlDataAdapter myAdapter = new SqlDataAdapter(query, myConn);
+        DataSet myData = new DataSet();
+        myAdapter.Fill(myData);
+        return myData;
+    }
+
+    public static object fetchScalar(string query, int timeToWait)
+    {
+        SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["TTTConectionString"].ConnectionString);
+        SqlCommand myCmd = new SqlCommand(query, myConn);
+        myConn.Open();
+        myCmd.CommandTimeout = timeToWait;
+        object scalar = myCmd.ExecuteScalar();
+        myConn.Close();
+        return scalar;
+    }
+
 }

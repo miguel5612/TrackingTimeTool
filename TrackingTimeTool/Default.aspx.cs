@@ -25,6 +25,9 @@ public partial class _Default : System.Web.UI.Page
             {
                 strSQL = "INSERT INTO [User] (Name,Vorname,Mail,Passwort,Bemerkungen) VALUES ('','','"+email+"','"+passwort+"', "+"'')";
                 funktions.fetchScalar(strSQL);
+                strSQL = "SELECT ID FROM  [User]  WHERE Mail='" + email + "' AND Passwort='" + passwort + "'";
+                var ID = funktions.fetchScalar(strSQL);
+                Session.Add("ID", ID);
                 Response.Redirect("/Main.aspx");
                 Response.End();
             }
@@ -52,6 +55,9 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
+            strSQL = "SELECT ID FROM  [User]  WHERE Mail='" + email + "' AND Passwort='" + passwort + "'";
+            var ID = funktions.fetchScalar(strSQL);
+            Session.Add("ID", ID);
             Session.Add("User", email);
             Response.Redirect("/Main.aspx");
         }

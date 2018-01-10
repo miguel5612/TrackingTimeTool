@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterBlank.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 	<script src="Recursos/JS/jquery-3.2.1.min.js"></script>
@@ -10,6 +10,7 @@
 	    background-color: #EFEFEF;
     }
     .login {
+        margin-left:15.1%;
 	    background: white; /* For browsers that do not support gradients */
 	    background: -webkit-linear-gradient(bottom,rgba(50,50,50,0),rgba(50,50,50,1)); /*Safari 5.1-6*/
 	    background: -o-linear-gradient(top,rgba(50,50,50,0),rgba(50,50,50,1)); /*Opera 11.1-12*/
