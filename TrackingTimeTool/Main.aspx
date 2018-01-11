@@ -24,8 +24,23 @@
  <div class="">
      <div runat="server" id="containerImage">   <img class="buttonPlay" id="imgBtnPlay" src="Recursos/IMG/play-button.svg" onclick="Timer()"></img> </div>
      <asp:Label Text="" ID="labelPlay" runat="server" />
-     <asp:GridView ID="GridView1" runat="server" DataSourceID="DS1">
+     <asp:GridView ID="GridView1" CssClass="GV1" runat="server" DataSourceID="DS1">
      </asp:GridView>
+
+     <asp:GridView cssClass="GV2" ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="DS2">
+         <Columns>
+             <asp:BoundField DataField="ProyectName" HeaderText="ProyectName" SortExpression="ProyectName" />
+             <asp:BoundField DataField="HourCost" HeaderText="HourCost" SortExpression="HourCost" />
+             <asp:BoundField DataField="CreationDate" HeaderText="CreationDate" SortExpression="CreationDate" />
+             <asp:CheckBoxField DataField="IsAktiv" HeaderText="IsAktiv" SortExpression="IsAktiv" />
+         </Columns>
+     </asp:GridView>
+     <asp:SqlDataSource ID="DS2" runat="server" ConnectionString="<%$ ConnectionStrings:TTTConectionString %>" SelectCommand="SELECT [ProyectName], [HourCost], [CreationDate], [IsAktiv] FROM [Proyecto] WHERE ([IDUserCreator] = @IDUserCreator) ORDER BY [CreationDate] DESC">
+         <SelectParameters>
+             <asp:SessionParameter Name="IDUserCreator" SessionField="ID" Type="Int64" />
+         </SelectParameters>
+     </asp:SqlDataSource>
+
      <asp:SqlDataSource ID="DS1" runat="server" ConnectionString="<%$ ConnectionStrings:TTTConectionString %>" SelectCommand="SELECT [WorkTitle], [WorkDate], [Bemerkungen], [CreationDate] FROM [Works] WHERE ([IDUser] = @IDUser)">
          <SelectParameters>
              <asp:SessionParameter DefaultValue="Null" Name="IDUser" SessionField="ID" Type="Int64" />

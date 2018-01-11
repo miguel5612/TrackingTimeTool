@@ -33,7 +33,10 @@
 #divMain {
     margin-left:23.1%;
 }
-#submitbtn{
+.submitbtn{
     margin-top:16px;
     margin-left:16px;
+}
+.pryInput{
+    width:500px;
 }

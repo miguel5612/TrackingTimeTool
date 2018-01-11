@@ -8,7 +8,6 @@
 <div class="row">  
 <div class="col-md-6 col-md-offset-3" style="padding-right: 0px!important;padding-left: 0px!important;">
 	<div class="panel-body" style="padding-right: 4px!important;padding-left: 4px!important;">
-<form class="form-horizontal" method="post" id="AddProyect" name="login" role="form"  action="/addProyect.aspx" AUTOCOMPLETE="off">
 	<fieldset  style="min-width: 0;padding:.35em .625em .75em!important;margin:0 2px;border: 2px solid silver!important;margin-bottom: 10em;box-shadow: -6px 15px 20px 0px;">
 
 <div class="form-group hidden" id="myId1" style="margin-bottom: 0px!important;">
@@ -16,32 +15,30 @@
 									<div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
 									<div
 										class="col-sm-10 col-md-10 col-lg-10 col-xs-10 input-group">
-										<span class="input-group-addon"><span
-											class="glyphicon glyphicon-lock" style="color: black;"></span></span> <input
-											type="password" class="form-control" id="password"
-											style="width: 100%;" placeholder="Enter your Password"><span
-											class="input-group-btn">
-											
-										</span>
+										
+                                            <form action="/" method="post">
+         <asp:TextBox cssClass="pryInput" ID="pryTittle" placeholder="Por favor ingrese el titulo del proyecto" runat="server"></asp:TextBox>
+                                                 <asp:Literal runat="server" ID="Literal2"></asp:Literal>
+                                                <asp:Literal runat="server" ID="Literal1"></asp:Literal>
+                                            </form>
 									</div>
 									<div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
 								</div>	
 
 
 							
-										<button id="submitbtn" type="submit"
-											class="btn btn-success"
-											onClick="javascript:return loginStatus();"
-											style=" font-size: 13px;">
-											Login</button>
-
+										
+                                <asp:Button cssClass="btn btn-success submitbtn" ID="SubmitTittle" OnClick="SubmitTittle_Click" runat="server" Text="Button" />
+                                <asp:Label runat="server" ID="labelBtn" />
 									
 									<div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
 										
 </fieldset>
-</form>
+
 </div>
 </div>
+    </div>
+         </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FooterContent" Runat="Server">
 </asp:Content>
