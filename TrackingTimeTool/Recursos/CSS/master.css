@@ -4,27 +4,32 @@
 }
 
 /*navbar start*/
-
+ 
 @media(min-width:768px) {
 
     body {
-        margin-top: 50px;
-    }
+            margin-top: 50px;
+        }
 }
 
 #wrapper {
     padding-left: 0;
 }
-
+.input-group{
+    width:auto;
+}
+.btn {
+    margin-left: 0px !important
+}
 #page-wrapper {
     width: 100%;
     padding: 0;
 }
-
+.timeStyle{
+    width:750px;
+}
 /* Side Navigation */
-
 @media(min-width:768px) {
-
     #wrapper {
         padding-left: 225px;
     }
@@ -34,6 +39,7 @@
     }
 
     .side-nav {
+        z-index: 999999999;
         position: fixed;
         top: -21px;
         left: 225px;

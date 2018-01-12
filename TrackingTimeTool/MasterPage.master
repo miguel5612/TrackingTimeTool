@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 
 <html>
-<head runat="server">
-    <title>Tracking Time Tool </title>
+<head runat="server">Tracking Time Tool </title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>    
     <script src="Recursos/JS/jquery-3.2.1.min.js"></script>
@@ -16,19 +15,14 @@
 </head>
 <body style="background-color:LightSteelBlue">
     
+    <form id="form1" runat="server">
+    
 <div id="wrapper">
-
     <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-                <span class="sr-only">Toggle navigation</span>
-            </button>
-            <div class="navbar-brand">   
-            </div>
-        </div>
-
-        <form action="" class="navbar-form navbar-left">
+     
+      <!--
             <div class="input-group">
               <div class="input-group-btn">
                   <button class="btn  search-btn-icon">
@@ -36,10 +30,32 @@
                   </button>
                </div>
               <input type="Search" placeholder="Search Client" class="form-control-serch search-box" />   
+            </div> 
+      -->
+            <div class="input-group">
+              <div class="input-group-btn">
+                  <button runat="server" AutoPostback="false" class="btn  search-btn-icon">
+                   <i class="fa fa-search" aria-hidden="true"></i>                  
+                  </button>
+               </div>
+              <input runat="server" AutoPostback="false" autocomplete="true" type="Search" placeholder="Que haces ahora?" class="WorkTitle timeStyle form-control-serch search-box" />   
             </div>     
-        </form>
-
+        
+    Nombre del proyecto asociado a esta tarea:</p>
+     <div class="navbar-form navbar-left">
         <!-- Top Menu Items -->
+        <asp:DropDownList  ID="Proyecto" runat="server" DataSourceID="DS3" DataTextField="ProyectName" DataValueField="IDProyecto">
+        </asp:DropDownList>
+         </div>
+      <div class="navbar-form navbar-left"> <input type="Search" readonly="readonly"  size="3" placeholder="0:00:00" id="spanTime" class="form-control-serch search-box" />   
+                </div>
+
+    
+        <asp:SqlDataSource ID="DS3" runat="server" ConnectionString="<%$ ConnectionStrings:TTTConectionString %>" SelectCommand="SELECT [ProyectName], [IDProyecto] FROM [Proyecto] WHERE ([IDUserCreator] = @IDUserCreator)">
+            <SelectParameters>
+                <asp:SessionParameter Name="IDUserCreator" SessionField="ID" Type="Int64" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <div class="items">
           <ul class="nav navbar-right top-nav">        
             <li class="editpro">
@@ -75,7 +91,6 @@
         <!-- /.navbar-collapse -->
   </nav>
     </div>
-    <form id="form1" runat="server">
     <div>
         <asp:ContentPlaceHolder id="BodyContent" runat="server">
         

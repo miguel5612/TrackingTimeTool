@@ -18,6 +18,7 @@ public class funktions
 {
     public funktions()
     {
+
         //
         // TODO: Add constructor logic here
         //
@@ -25,12 +26,20 @@ public class funktions
     }
     public static object fetchScalar(string query)
     {
+        try { 
         SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["TTTConectionString"].ConnectionString);
         SqlCommand myCmd = new SqlCommand(query, myConn);
         myConn.Open();
         object scalar = myCmd.ExecuteScalar();
         myConn.Close();
         return scalar;
+        }
+        catch
+        {
+            return 9999999;
+        }
+
+       
     }
     public static SqlDataReader fetchReader(string query)
     {

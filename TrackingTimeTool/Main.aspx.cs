@@ -11,12 +11,17 @@ public partial class Main : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            var strSQL = "SELECT COUNT(*) FROM [Works] WHERE IDUser="+ Session["ID"];
+            var id = Session["ID"];
+            var strSQL = "SELECT COUNT(*) FROM [Proyecto] WHERE IDUserCreator=" + id;
             var count = funktions.fetchScalar(strSQL);
-            if ((int)count > 0)
+            if((int) count > 9999999 || Convert.ToInt64(id) <= 0)
+            {
+                Response.Redirect("Default.aspx");
+            }else if ((int)count > 0)
             {
                 containerImage.Visible = true;
-                labelPlay.Text = "Por favor haga clic para empezar a contar el tiempo";
+                labelPlay.Text = "Todo en orden :)";
+                HFIDUser.Text = id.ToString();
             }
             else
             {

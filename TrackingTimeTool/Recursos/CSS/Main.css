@@ -1,1 +1,20 @@
-﻿
+﻿.GV1 {
+    margin-left: 42%;
+    position: absolute;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.GV2 {
+    margin-left: 42%;
+    position: absolute;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.timeStyle {
+    font-family: Arial;
+    font-size: 32pt;
+   }
+#hiddenInsert{
+    margin-top:220px;
+    margin-left:1233px;
+}
