@@ -9,6 +9,8 @@ public partial class Main : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        var status = Session["status"];
+       
         if (!IsPostBack)
         {
             var id = Session["ID"];
@@ -40,5 +42,30 @@ public partial class Main : System.Web.UI.Page
         {
             Email.Text = email;
         }
+    }
+
+    protected void TimesFormView_Updated(object sender, SqlDataSourceStatusEventArgs e)
+    {
+        
+    }
+
+    protected void TimesFormView_Insert(object sender, SqlDataSourceCommandEventArgs e)
+    {
+        
+
+    }
+
+    protected void TimesFormView_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+    {
+        var time = DateTime.Now.ToString();
+        Session["status"] = "count";
+        count.Text = "true";
+        countTimeStart.Text = time;
+        countTimeEnd.Text = "0";
+        duration.Text = "0:00:00";
+        ClientScript.RegisterStartupScript(GetType(), "hwa", "stopStart()", true);
+        Label1.Text = e.Command.Parameters["@Identity"].Value.ToString();
+        //Session["IDWork"] = e.Command.Parameters["@IDWork"];
+        //Session["IDUser"] = e.Command.Parameters["@IDUser"];
     }
 }

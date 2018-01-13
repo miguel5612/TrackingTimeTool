@@ -1,4 +1,4 @@
-﻿var time; var on = false; var seconds = 0; var minutes = 0; var hours = 0; var url = "/Work.aspx"; var datos = "";
+﻿var time; var on = false; var seconds = 0; var minutes = 0; var hours = 0; var url = "/Work.aspx"; var datos = ""; var counting = false;
  
 var startTime = function(){
         seconds++;
@@ -9,10 +9,12 @@ var startTime = function(){
         document.getElementById("spanTime").value = time;
        
 }
- 
+
+
 var stopStart = function(){
         document.getElementsByClassName("time")[0].innerHTML = !on ? "Stop" : "Start";
-        if(!on){
+        if (!on || (document.querySelectorAll("input[id*=count]")[0].value && !counting)) {
+            counting = !counting;
             on = true; startTime();
             // envio la peticion get para generar el ingreso a la base de datos.
             time = new Date().toLocaleString();
@@ -29,8 +31,10 @@ var stopStart = function(){
             document.querySelectorAll("input[id*=CreationDate]")[1].value = time;
             document.querySelector("input[id*=Bemerkungen]").value = "";
             document.querySelector("input[id*=endDate]").value = "";
-            Alert("se realizara un envio del formulario");
-            document.getElementById("InsertButton").click();
+            if (!(document.querySelectorAll("input[id*=count]")[0].value && !counting)) {
+                alert("se realizara un envio del formulario");
+                document.getElementById("InsertButton").click();
+            }
             /*
             datos = "?status=insert&WorkTitle=" + titulo + "&WorkDate=" + time + "&CreationDate=" +
                 time + "&Bemerkungen=null" + "&endDate=null" + "&IDProyecto=" + document.getElementById("Proyecto").value +
@@ -38,7 +42,8 @@ var stopStart = function(){
             //alert(url + datos);
             window.location = url + datos;
             */
-        }else{
+        } else {
+            counting = !counting;
             on = false; clearTimeout(counter);
             document.getElementById("spanTime").value = "00:00:00";
             seconds = 0; minutes = 0; hours = 0;
