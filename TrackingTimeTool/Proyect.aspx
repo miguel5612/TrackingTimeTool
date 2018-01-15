@@ -28,7 +28,7 @@
 
 							
 										
-                                <asp:Button cssClass="btn btn-success submitbtn" ID="SubmitTittle" OnClick="SubmitTittle_Click" runat="server" Text="Button" />
+                                <asp:Button cssClass="btn btn-success submitbtn" ID="SubmitTittle" OnClick="SubmitTittle_Click" runat="server" Text="Añadir Proyecto" />
                                 <asp:Label runat="server" ID="labelBtn" />
 									
 									<div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
@@ -36,7 +36,7 @@
 </fieldset>
          <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="IDProyecto" DataSourceID="ProyectView" Width="1418px">
              <Columns>
-                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                
                  <asp:TemplateField HeaderText="IDProyecto" InsertVisible="False" SortExpression="IDProyecto">
                      <EditItemTemplate>

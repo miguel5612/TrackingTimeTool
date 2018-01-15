@@ -27,13 +27,17 @@ function cargarFormularioInsercion(){
     document.querySelector("input[id*=Bemerkungen]").value = "";
     document.querySelector("input[id*=endDate]").value = "";
     //inicia a contar el tiempo
+    deleteCounter();
+    
+        on = true; startTime();
+}
+function deleteCounter() {
     try {
         clearTimeout(counter);// limpio cualquier rastro
     }
-    catch(err){
+    catch (err) {
     }
-    
-        on = true; startTime();
+
 }
 function cargarFormularioActualizacion(){
 
@@ -46,19 +50,22 @@ function cargarFormularioActualizacion(){
 
 }
 
-var stopStart = function(){
+var stopStart = function () {
+    //alert("he llegado");
         document.getElementsByClassName("time")[0].innerHTML = !on ? "Stop" : "Start";
         if (!on) {
+            //alert("insertando");
             counting = !counting;
             on = true; startTime();
             //´preparo el formulario para la insercion de la fecha de inicio
             cargarFormularioInsercion();
-                alert("se realizara un envio del formulario");            
+                //alert("se realizara un envio del formulario");            
                 document.querySelectorAll("a[id*=InsertButton]")[0].click();
         } else {
+            //alert("Actualizando");
             cargarFormularioActualizacion();
             counting = !counting;
-            on = false; clearTimeout(counter);
+            on = false; deleteCounter();
             document.getElementById("spanTime").value = "00:00:00";
             seconds = 0; minutes = 0; hours = 0;
             document.querySelectorAll("a[id*=UpdateButton]")[0].click();

@@ -8,4 +8,7 @@
     document.getElementsByClassName("Client")[0].onclick = function () {
         location.href = "Proyect.aspx";
     };
+    document.getElementsByClassName("TimeDetail")[0].onclick = function () {
+        location.href = "TimeDetail.aspx";
+    };
 });

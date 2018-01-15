@@ -70,20 +70,23 @@
             <ul class="nav navbar-nav side-nav">
               <a href="#"><img class="logostyle" src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620" alt="LOGO""></a>
                 <li id="Main">
-                   <a class="active" href="/Main.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-home" aria-hidden="true"></i>   <span style="color:white;">  Home </span></a>
+                   <a class="active" href="/Main.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-home" aria-hidden="true"></i>   <span style="color:white;">  Inicio </span></a>
                 </li>
 
                 <li class="Client" id="Client" runat="server">
-                    <a class="#" href="/Proyect.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-user-o" aria-hidden="true"></i>   <span style="color:white;">  Add/Modify Proyect </span></a>
+                    <a class="#" href="/Proyect.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-user-o" aria-hidden="true"></i>   <span style="color:white;">  Añadir/modificar proyecto </span></a>
                 </li>
                 
+                
+                <li class="TimeDetail" id="TimeDetail" runat="server">
+                    <a class="#" href="/TimeDetail" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-envelope" aria-hidden="true"></i>  <span style="color:white;"> Eliminar/Editar registros de tiempos </span></a>
+                </li>
+
+                
                 <li id="Logout">
-                    <a class="#" href="/logout.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-man" aria-hidden="true"></i>   <span style="color:white;"> Logout </span></a>
+                    <a class="#" href="/logout.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-man" aria-hidden="true"></i>   <span style="color:white;"> Cerrar sesion </span></a>
                 </li>
                 <!--
-                <li>
-                    <a class="#" href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-envelope" aria-hidden="true"></i>  <span style="color:white;"> Messages </span></a>
-                </li>
                 <li>
                     <a class="#" href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-cogs" aria-hidden="true"></i>   <span style="color:white;"> Settings </span></a>
                 </li>

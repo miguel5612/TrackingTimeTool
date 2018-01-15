@@ -73,6 +73,7 @@ public partial class Main : System.Web.UI.Page
 
     protected void updateDataSource_Updated(object sender, SqlDataSourceStatusEventArgs e)
     {
+        timeStartStop.Text = "Label";
         GridView1.DataBind();
     }
 }

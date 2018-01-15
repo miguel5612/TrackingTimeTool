@@ -48,11 +48,11 @@
 				</label>
 			  </div>
 				<div class="btn-group btn-group-justified" role="group" aria-label="...">
-				  <div class="btn-group" role="group">
-                    <asp:Button ID="Button1" onclick="Button1_Click1" runat="server" Text="Register" />
-				  </div>
+				  
 				  <div class="btn-group" role="group">
 					<asp:Button ID="Button2" onclick="Button2_Click" runat="server" Text="Anmelden" CssClass="btn btn-primary"/> 
+				  </div><div class="btn-group" role="group">
+                    <asp:Button ID="Button1" onclick="Button1_Click1" runat="server" Text="Register" />
 				  </div>
 				</div>
 			</form>

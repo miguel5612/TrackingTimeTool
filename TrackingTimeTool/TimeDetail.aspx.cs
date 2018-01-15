@@ -31,8 +31,8 @@ public partial class Proyect : System.Web.UI.Page
                 labelBtn.Text = "Titulo ya usado anteriormente por favor ingrese otro.";
                 labelBtn.Attributes.Add("Style", "background-color:red");
             }
-            else {
-                strSQL = "INSERT INTO[Proyecto]([IDUserCreator],[CreationDate],[ProyectName],[HourCost],[IsAktiv]) VALUES (" + Session["ID"] + ",'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + pryTittle.Text.ToString() + "',0,1)" ;
+            else { 
+            strSQL = "INSERT INTO[Proyecto]([IDUserCreator],[CreationDate],[ProyectName],[HourCost],[IsAktiv]) VALUES (" + Session["ID"] + ",'" + DateTime.Now + "','" + pryTittle.Text.ToString() + "',0,1)" ;
             funktions.fetchScalar(strSQL);
                 Response.Redirect("Main.aspx");
 

@@ -20,7 +20,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" Runat="Server">
     
-<div class="container-fluid">
+    <div class="container-fluid">
 <div class="row text-center">
 <div class="col-md-12 dashhead">
 <h1> Bienvenido <asp:Label ID="Email" runat="server" />!</h1>
