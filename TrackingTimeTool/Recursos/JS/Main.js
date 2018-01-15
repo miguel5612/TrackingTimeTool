@@ -1,5 +1,7 @@
 ﻿var time; var on = false; var seconds = 0; var minutes = 0; var hours = 0; var url = "/Work.aspx"; var datos = ""; var counting = false;
- 
+$(document).ready(function () {
+    if (document.getElementsByClassName("time")[0].innerHTML == "Started") { on = true; }
+});
 var startTime = function(){
         seconds++;
         counter = setTimeout("startTime()",1000);
@@ -9,43 +11,57 @@ var startTime = function(){
         document.getElementById("spanTime").value = time;
        
 }
+function cargarFormularioInsercion(){
+    time = new Date().toLocaleString();
+    var titulo = document.getElementsByClassName("WorkTitle")[0].value;
+    if (titulo.length <= 0) {
+        titulo = null;
+    }
+    document.getElementById("HFCreationDate").value = time;
+    document.getElementById("HFWorkDate").value = time;
+    document.querySelectorAll("input[id*=IDUser]")[1].value = document.querySelector("input[id*=HFIDUser]").value;
+    document.querySelector("input[id*=IDProyecto]").value = document.getElementById("Proyecto").value;
+    document.querySelector("input[id*=WorkTitle]").value = titulo;
+    document.querySelectorAll("input[id*=WorkDate]")[1].value = time;
+    document.querySelectorAll("input[id*=CreationDate]")[1].value = time;
+    document.querySelector("input[id*=Bemerkungen]").value = "";
+    document.querySelector("input[id*=endDate]").value = "";
+    //inicia a contar el tiempo
+    try {
+        clearTimeout(counter);// limpio cualquier rastro
+    }
+    catch(err){
+    }
+    
+        on = true; startTime();
+}
+function cargarFormularioActualizacion(){
 
+    // preparo el formulario 2 para el envio final :)
+    var titulo = document.getElementsByClassName("WorkTitle")[0].value;
+    time = new Date().toLocaleString();
+    document.querySelectorAll("input[id*=WorkTitleTextBox]")[1].value = titulo;
+    document.querySelectorAll("input[id*=endDateTextBox]")[1].value = time;
+    document.querySelectorAll("input[id*=durationTextBox]")[1].value = document.getElementById("spanTime").value;
+
+}
 
 var stopStart = function(){
         document.getElementsByClassName("time")[0].innerHTML = !on ? "Stop" : "Start";
-        if (!on || (document.querySelectorAll("input[id*=count]")[0].value && !counting)) {
+        if (!on) {
             counting = !counting;
             on = true; startTime();
-            // envio la peticion get para generar el ingreso a la base de datos.
-            time = new Date().toLocaleString();
-            var titulo = document.getElementsByClassName("WorkTitle")[0].value;
-            if (titulo.length <= 0) {
-                titulo = null;
-            }
-            document.getElementById("HFCreationDate").value = time;
-            document.getElementById("HFWorkDate").value = time;
-            document.querySelectorAll("input[id*=IDUser]")[1].value = document.querySelector("input[id*=HFIDUser]").value;
-            document.querySelector("input[id*=IDProyecto]").value = document.getElementById("Proyecto").value ;
-            document.querySelector("input[id*=WorkTitle]").value = titulo;
-            document.querySelectorAll("input[id*=WorkDate]")[1].value = time;
-            document.querySelectorAll("input[id*=CreationDate]")[1].value = time;
-            document.querySelector("input[id*=Bemerkungen]").value = "";
-            document.querySelector("input[id*=endDate]").value = "";
-            if (!(document.querySelectorAll("input[id*=count]")[0].value && !counting)) {
-                alert("se realizara un envio del formulario");
-                document.getElementById("InsertButton").click();
-            }
-            /*
-            datos = "?status=insert&WorkTitle=" + titulo + "&WorkDate=" + time + "&CreationDate=" +
-                time + "&Bemerkungen=null" + "&endDate=null" + "&IDProyecto=" + document.getElementById("Proyecto").value +
-                "&IDUser=" + document.getElementsByClassName("IDUser")[0].value;
-            //alert(url + datos);
-            window.location = url + datos;
-            */
+            //´preparo el formulario para la insercion de la fecha de inicio
+            cargarFormularioInsercion();
+                alert("se realizara un envio del formulario");            
+                document.querySelectorAll("a[id*=InsertButton]")[0].click();
         } else {
+            cargarFormularioActualizacion();
             counting = !counting;
             on = false; clearTimeout(counter);
             document.getElementById("spanTime").value = "00:00:00";
             seconds = 0; minutes = 0; hours = 0;
+            document.querySelectorAll("a[id*=UpdateButton]")[0].click();
+            
         }
 }

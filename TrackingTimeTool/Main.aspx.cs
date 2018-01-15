@@ -63,9 +63,16 @@ public partial class Main : System.Web.UI.Page
         countTimeStart.Text = time;
         countTimeEnd.Text = "0";
         duration.Text = "0:00:00";
-        ClientScript.RegisterStartupScript(GetType(), "hwa", "stopStart()", true);
-        Label1.Text = e.Command.Parameters["@Identity"].Value.ToString();
+        ClientScript.RegisterStartupScript(GetType(), "hwa", "cargarFormularioInsercion()", true);
+        IDCount.Value = e.Command.Parameters["@ID"].Value.ToString();
+        timeStartStop.Text = "Started";
+        Session["ActualTime"] = IDCount.Value;
         //Session["IDWork"] = e.Command.Parameters["@IDWork"];
         //Session["IDUser"] = e.Command.Parameters["@IDUser"];
+    }
+
+    protected void updateDataSource_Updated(object sender, SqlDataSourceStatusEventArgs e)
+    {
+        GridView1.DataBind();
     }
 }

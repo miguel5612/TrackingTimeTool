@@ -3,18 +3,34 @@
     position: absolute;
     margin-top: 1%;
     margin-bottom: 1%;
+    top: 180px;
+    left: -13px;
+    width: 949px;
 }
 .GV2 {
-    margin-left: 42%;
+    margin-left: 112%;
     position: absolute;
     margin-top: 1%;
     margin-bottom: 1%;
+    top: 178px;
+    left: -1016px;
+    display:none;
+
+}
+#GV2Container{
+    position:absolute;
 }
 .timeStyle {
     font-family: Arial;
     font-size: 32pt;
-   }
+}
 #hiddenInsert{
     margin-top:220px;
     margin-left:1233px;
+}
+#HFCountingDivx{
+    display: none;
+}
+#divFormViewInsertUpdate {
+    display: none;
 }
