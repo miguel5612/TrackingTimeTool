@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 
 <html>
-<head runat="server">Tracking Time Tool </title>
+<head>
+    <title>Tracking Time Tool </title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>    
     <script src="Recursos/JS/jquery-3.2.1.min.js"></script>
@@ -51,9 +52,10 @@
                 </div>
 
     
-        <asp:SqlDataSource ID="DS3" runat="server" ConnectionString="<%$ ConnectionStrings:TTTConectionString %>" SelectCommand="SELECT [ProyectName], [IDProyecto] FROM [Proyecto] WHERE ([IDUserCreator] = @IDUserCreator)">
+        <asp:SqlDataSource ID="DS3" runat="server" ConnectionString="<%$ ConnectionStrings:TTTConectionString %>" SelectCommand="SELECT [ProyectName], [IDProyecto] FROM [Proyecto] WHERE (([IDUserCreator] = @IDUserCreator) AND ([IsAktiv] = @IsAktiv))">
             <SelectParameters>
                 <asp:SessionParameter Name="IDUserCreator" SessionField="ID" Type="Int64" />
+                <asp:SessionParameter DefaultValue="1" Name="IsAktiv" SessionField="IsAktivDefaultMode" Type="Boolean" />
             </SelectParameters>
         </asp:SqlDataSource>
         <div class="items">

@@ -40,7 +40,7 @@
      <asp:Label ID="timeStartStop" cssClass="time" runat="server" Text="Label"></asp:Label>
          </div>
      <div id="GV1Container">
-         <asp:GridView ID="GridView1" CssClass="GV1" runat="server" DataSourceID="DS1" AutoGenerateColumns="False">
+         <asp:GridView ID="GridView1" CssClass="GV1" runat="server" DataSourceID="DS1" AutoGenerateColumns="False" AllowPaging="True">
              <Columns>
                  <asp:BoundField DataField="WorkTitle" HeaderText="Titulo del trabajo" SortExpression="WorkTitle" />
                  <asp:BoundField DataField="ProyectName" HeaderText="Nombre del proyecto" SortExpression="ProyectName" />

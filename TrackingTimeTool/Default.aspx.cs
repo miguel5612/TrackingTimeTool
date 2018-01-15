@@ -28,6 +28,8 @@ public partial class _Default : System.Web.UI.Page
                 strSQL = "SELECT ID FROM  [User]  WHERE Mail='" + email + "' AND Passwort='" + passwort + "'";
                 var ID = funktions.fetchScalar(strSQL);
                 Session.Add("ID", ID);
+                Session.Add("User", email);
+                Session.Add("IsAktivDefaultMode", 1);                
                 Response.Redirect("/Main.aspx");
                 Response.End();
             }
@@ -59,6 +61,7 @@ public partial class _Default : System.Web.UI.Page
             var ID = funktions.fetchScalar(strSQL);
             Session.Add("ID", ID);
             Session.Add("User", email);
+            Session.Add("IsAktivDefaultMode", 1);
             Response.Redirect("/Main.aspx");
         }
     }
