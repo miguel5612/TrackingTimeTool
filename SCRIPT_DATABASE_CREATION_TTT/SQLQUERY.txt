@@ -1,0 +1,89 @@
+USE [TTT]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 01/15/2018 16:32:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[User](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NULL,
+	[Vorname] [varchar](50) NULL,
+	[Mail] [varchar](50) NULL,
+	[Passwort] [varchar](50) NULL,
+	[Bemerkungen] [varchar](100) NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Proyecto]    Script Date: 01/15/2018 16:32:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Proyecto](
+	[IDProyecto] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDUserCreator] [bigint] NOT NULL,
+	[CreationDate] [datetime] NOT NULL,
+	[ProyectName] [varchar](50) NULL,
+	[HourCost] [float] NULL,
+	[IsAktiv] [bit] NULL,
+ CONSTRAINT [PK_Proyecto] PRIMARY KEY CLUSTERED 
+(
+	[IDProyecto] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Works]    Script Date: 01/15/2018 16:32:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Works](
+	[IDWork] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDUser] [bigint] NOT NULL,
+	[IDProyecto] [bigint] NOT NULL,
+	[WorkTitle] [varchar](50) NULL,
+	[WorkDate] [datetime] NULL,
+	[CreationDate] [datetime] NOT NULL,
+	[Bemerkungen] [varchar](150) NULL,
+	[endDate] [datetime] NULL,
+	[duration] [varchar](50) NULL,
+ CONSTRAINT [PK_Works] PRIMARY KEY CLUSTERED 
+(
+	[IDWork] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  ForeignKey [FK_Proyecto_User]    Script Date: 01/15/2018 16:32:16 ******/
+ALTER TABLE [dbo].[Proyecto]  WITH CHECK ADD  CONSTRAINT [FK_Proyecto_User] FOREIGN KEY([IDUserCreator])
+REFERENCES [dbo].[User] ([ID])
+GO
+ALTER TABLE [dbo].[Proyecto] CHECK CONSTRAINT [FK_Proyecto_User]
+GO
+/****** Object:  ForeignKey [FK_Works_Proyecto1]    Script Date: 01/15/2018 16:32:16 ******/
+ALTER TABLE [dbo].[Works]  WITH CHECK ADD  CONSTRAINT [FK_Works_Proyecto1] FOREIGN KEY([IDProyecto])
+REFERENCES [dbo].[Proyecto] ([IDProyecto])
+GO
+ALTER TABLE [dbo].[Works] CHECK CONSTRAINT [FK_Works_Proyecto1]
+GO
+/****** Object:  ForeignKey [FK_Works_User]    Script Date: 01/15/2018 16:32:16 ******/
+ALTER TABLE [dbo].[Works]  WITH CHECK ADD  CONSTRAINT [FK_Works_User] FOREIGN KEY([IDUser])
+REFERENCES [dbo].[User] ([ID])
+GO
+ALTER TABLE [dbo].[Works] CHECK CONSTRAINT [FK_Works_User]
+GO
