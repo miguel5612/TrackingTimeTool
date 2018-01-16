@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <title>Tracking Time Tool </title>
+Tracking Time Tool </title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>    
     <script src="Recursos/JS/jquery-3.2.1.min.js"></script>
@@ -42,7 +41,7 @@
               <input runat="server" AutoPostback="false" autocomplete="true" type="Search" placeholder="Que haces ahora?" class="WorkTitle timeStyle form-control-serch search-box" />   
             </div>     
         
-    Nombre del proyecto asociado a esta tarea:</p>
+   Nombre del proyecto asociado a esta tarea:</p>
      <div class="navbar-form navbar-left">
         <!-- Top Menu Items -->
         <asp:DropDownList  ID="Proyecto" runat="server" DataSourceID="DS3" DataTextField="ProyectName" DataValueField="IDProyecto">
@@ -52,7 +51,12 @@
                 </div>
 
     
-        <asp:SqlDataSource ID="DS3" runat="server" ConnectionString="<%$ ConnectionStrings:TTTConectionString %>" SelectCommand="SELECT [ProyectName], [IDProyecto] FROM [Proyecto] WHERE (([IDUserCreator] = @IDUserCreator) AND ([IsAktiv] = @IsAktiv))">
+        <asp:SqlDataSource ID="DS3" runat="server" ConnectionString="<%$ ConnectionStrings:TTTConectionString %>" 
+            SelectCommand="Select ProyectName, IDProyecto
+                FROM (
+	                 (SELECT Proyecto.ProyectName AS ProyectName,Proyecto.IDProyecto AS IDProyecto FROM User_Proyect INNER JOIN Proyecto ON User_Proyect.IDProyect = Proyecto.IDProyecto  WHERE User_Proyect.IDUser = @IDUserCreator) union all 
+	                 (SELECT ProyectName, IDProyecto FROM Proyecto WHERE IDUserCreator = @IDUserCreator )
+	                 ) t">
             <SelectParameters>
                 <asp:SessionParameter Name="IDUserCreator" SessionField="ID" Type="Int64" />
                 <asp:SessionParameter DefaultValue="1" Name="IsAktiv" SessionField="IsAktivDefaultMode" Type="Boolean" />
@@ -82,15 +86,21 @@
                     <a class="#" href="/TimeDetail" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-envelope" aria-hidden="true"></i>  <span style="color:white;"> Eliminar/Editar registros de tiempos </span></a>
                 </li>
 
-                
+                <li class="AddPersonenToProyect" id="AddPersonenToProyect">
+                    <a class="#" href="/AddPersonenToProyect.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-cogs" aria-hidden="true"></i>   <span style="color:white;"> Añadir personas a proyecto </span></a>
+                </li>
+
+                <li class="ReporteCompleto" id="ReporteCompleto">
+                    <a class="#" href="/ReportAllWork.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-cogs" aria-hidden="true"></i>   <span style="color:white;"> Imprimir reporte completo de tiempos </span></a>
+                </li>
+
+
                 <li id="Logout">
                     <a class="#" href="/logout.aspx" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-man" aria-hidden="true"></i>   <span style="color:white;"> Cerrar sesion </span></a>
                 </li>
-                <!--
-                <li>
-                    <a class="#" href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-cogs" aria-hidden="true"></i>   <span style="color:white;"> Settings </span></a>
-                </li>
-                -->
+                
+                
+                
             </ul>
         </div>
         <!-- /.navbar-collapse -->

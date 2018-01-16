@@ -11,4 +11,11 @@
     document.getElementsByClassName("TimeDetail")[0].onclick = function () {
         location.href = "TimeDetail.aspx";
     };
+    document.getElementsByClassName("AddPersonenToProyect")[0].onclick = function () {
+        location.href = "AddPersonenToProyect.aspx";
+    };
+    document.getElementsByClassName("ReporteCompleto")[0].onclick = function () {
+        location.href = "ReportAllWork.aspx";
+    };
+    
 });

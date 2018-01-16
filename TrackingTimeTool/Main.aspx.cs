@@ -14,7 +14,7 @@ public partial class Main : System.Web.UI.Page
         if (!IsPostBack)
         {
             var id = Session["ID"];
-            var strSQL = "SELECT COUNT(*) FROM [Proyecto] WHERE IDUserCreator=" + id;
+            var strSQL = "Select COUNT(*) FROM((SELECT Proyecto.ProyectName AS ProyectName, Proyecto.IDProyecto AS IDProyecto FROM User_Proyect INNER JOIN Proyecto ON User_Proyect.IDProyect = Proyecto.IDProyecto  WHERE Proyecto.IDUserCreator = "+id+") union all (SELECT ProyectName, IDProyecto FROM Proyecto WHERE IDUserCreator = "+id+")) t";
             var count = funktions.fetchScalar(strSQL);
             if((int) count > 9999999 || Convert.ToInt64(id) <= 0)
             {
